@@ -13,7 +13,7 @@ public class DataflowPipeline {
         DataflowPipelineOptions options = PipelineOptionsFactory.as(DataflowPipelineOptions.class);
         options.setProject("dualpubsub");
         options.setRegion("europe-west1");
-        options.setStagingLocation("gs://duo-pub-sub-bucket/binaries/");
+        options.setStagingLocation("gs://duo-pub-sub-bucket/output/");
         options.setGcpTempLocation("gs://duo-pub-sub-bucket/temp/");
         options.setNetwork("default");
         options.setSubnetwork("regions/us-central1/subnetworks/default");
@@ -24,7 +24,7 @@ public class DataflowPipeline {
         Pipeline pipeline = Pipeline.create(options);
 
         // Define the Pub/Sub subscription and destination topics
-        String subscription = "projects/dualpubsub/topics/order_source_topic";
+        String subscription = "projects/dualpubsub/subscriptions/order_source_topic-sub";
         String destinationTopic1 = "projects/dualpubsub/topics/oder_destination_topic1";
         String destinationTopic2 = "projects/dualpubsub/topics/oder_destination_topic2";
 
